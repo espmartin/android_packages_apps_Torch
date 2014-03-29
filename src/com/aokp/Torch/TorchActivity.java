@@ -1,4 +1,3 @@
-
 package com.aokp.Torch;
 
 import android.app.Activity;
@@ -28,22 +27,16 @@ public class TorchActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mUseCameraInterface = getResources().getBoolean(R.bool.useCameraInterface);
-        mHasNoHardwareFlash = getResources().getBoolean(R.bool.hasNoHardwareFlash);
         forceWhiteScreen = getIntent().getBooleanExtra("whitescreen", false);
         mWhiteScreen = (forceWhiteScreen || mHasNoHardwareFlash);
         boolean torchStatus = Settings.AOKP.getBoolean(getContentResolver(),
                 Settings.AOKP.TORCH_STATE, false);
 
         if (mWhiteScreen) {
-            setContentView(R.layout.whitescreen);
-            setTheme(R.style.WhiteScreenTheme);
             getActionBar().hide();
-            View whiteContent = findViewById(R.id.whitescreen_content);
             whiteContent.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast info = Toast.makeText(TorchActivity.this, R.string.toast_whitescreen, Toast.LENGTH_SHORT);
                     info.show();
                 }
             });
@@ -74,8 +67,6 @@ public class TorchActivity extends Activity {
 
         }
         else {
-            setContentView(R.layout.main);
-            setTheme(R.style.TransparentTheme);
             mTorchApp = (TorchApp) getApplicationContext();
             if (mUseCameraInterface) {
                 int[] textures = new int[1];
