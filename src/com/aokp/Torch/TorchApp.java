@@ -1,4 +1,3 @@
-
 package com.aokp.Torch;
 
 import java.io.File;
@@ -24,9 +23,6 @@ public class TorchApp extends Application {
     }
 
     private void getConfigValues () {
-        mFlashDevice = getResources().getString(R.string.flashDevice);
-        mValueOff = getResources().getInteger(R.integer.valueOff);
-        mValueOn = getResources().getInteger(R.integer.valueOn);
         if (!new File(mFlashDevice).exists()) {
             Log.e(TAG, "wrong device config and sysfs values in overlay");
         }
