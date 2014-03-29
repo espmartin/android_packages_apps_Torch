@@ -33,11 +33,10 @@ public class TorchActivity extends Activity {
                 Settings.AOKP.TORCH_STATE, false);
 
         if (mWhiteScreen) {
-            getActionBar().hide();
-            whiteContent.setOnClickListener(new View.OnClickListener() {
+            getActionBar().hide() {
                 @Override
                 public void onClick(View view) {
-                    info.show();
+
                 }
             });
             if (!torchStatus) {
